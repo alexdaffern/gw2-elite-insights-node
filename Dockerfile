@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 WORKDIR /src
 RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/baaron4/GW2-Elite-Insights-Parser.git .
-RUN dotnet publish GW2EIParserCLI/GW2EIParserCLI.csproj -c Release -o /out
+RUN dotnet publish GW2EI.Executables/GW2EI.Applications/GW2EIParserCLI/GW2EIParserCLI.csproj -c Release -o /out
 
 # --- Stage 2: runtime with .NET + Node ---
 FROM mcr.microsoft.com/dotnet/runtime:8.0 AS runtime
