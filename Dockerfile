@@ -1,5 +1,5 @@
 # --- Stage 1: build .NET app ---
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
+FROM mcr.microsoft.com/dotnet/sdk:latest AS builder
 
 WORKDIR /src
 RUN apt-get update && apt-get install -y git
