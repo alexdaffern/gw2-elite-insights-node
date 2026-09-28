@@ -4,6 +4,8 @@ FROM mcr.microsoft.com/dotnet/sdk:latest AS builder
 WORKDIR /src
 RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/baaron4/GW2-Elite-Insights-Parser.git .
+COPY patches/player-filter.patch /tmp/player-filter.patch
+RUN git apply /tmp/player-filter.patch
 RUN dotnet publish GW2EI.Executables/GW2EI.Applications/GW2EIParserCLI/GW2EIParserCLI.csproj -c Release -o /out
 
 # --- Stage 2: runtime with .NET + Node ---
