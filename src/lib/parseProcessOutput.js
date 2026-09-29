@@ -18,4 +18,4 @@ export const parseProcessOutput = (message) => {
   }
 
   return null;
-}
+};

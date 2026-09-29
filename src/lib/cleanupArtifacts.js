@@ -23,4 +23,4 @@ export const cleanupArtifacts = async (filename, keepJson = false) => {
   } catch (error) {
     console.error(`Error during cleanup for ${filename}:`, error);
   }
-}
+};

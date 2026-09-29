@@ -64,7 +64,7 @@ app.get("/api/read", async (req, res) => {
 });
 
 app.post("/api/parse", upload.array("files"), async (req, res) => {
-  if (!req.files || (req.files).length === 0) {
+  if (!req.files || req.files.length === 0) {
     return res.status(400).send("No files uploaded");
   }
 
@@ -105,11 +105,11 @@ app.post("/api/parse", upload.array("files"), async (req, res) => {
     console.error(`[STDERR] ${data.toString()}`);
   });
 
-  child.on("close", async (code) => {
+  child.on("close", (code) => {
     console.log(`[CLOSE] Process exited with code ${code}`);
   });
 
-  child.on("error", async (err) => {
+  child.on("error", (err) => {
     console.error(`[ERROR] Failed to start or stop process: ${err}`);
   });
 

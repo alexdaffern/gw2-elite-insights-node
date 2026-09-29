@@ -16,8 +16,5 @@
     "glob": "^11.0.3",
     "multer": "^2.0.2"
   },
-  "devDependencies": {
-    "typescript": "^5.5.3"
-  },
   "private": true
 }
