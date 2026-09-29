@@ -74,7 +74,12 @@ app.post("/api/parse", upload.array("files"), async (req, res) => {
 
   console.log(`Processing files: ${filesName.join(', ')}`);
 
-  const child = spawn(CLI_PATH, ["-c", CLI_CONFIG_PATH, ...filesArguments]);
+  // TODO: hardcoded for testing - replace with a value derived from the request
+  const PLAYER_ID = "Axees.8132";
+
+  const child = spawn(CLI_PATH, ["-c", CLI_CONFIG_PATH, ...filesArguments], {
+    env: { ...process.env, PLAYER_ID },
+  });
 
   child.stdout.on("data", async (data) => {
     const message = data.toString();
